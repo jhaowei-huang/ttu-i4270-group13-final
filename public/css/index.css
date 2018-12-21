@@ -1,0 +1,192 @@
+.bg {
+    background-image: url('../images/bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.7;
+}
+
+.bg-cover {
+    background: rgba(0, 0, 0, 0.7);
+    color: #f7f7f7;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    font-size: 1rem;
+    line-height: 2.5rem;
+}
+
+.content h2 {
+    line-height: 2rem;
+}
+
+#support a {
+    display: compact;
+
+}
+
+/*手機：寬度小於等於767px*/
+@media (max-width: 767px) {
+    /*小於4吋：高度小於等於480px*/
+    @media (max-height: 480px) {
+        .content {
+            font-size: 0.8rem;
+            line-height: 1.5rem;
+        }
+
+        .content h2 {
+            font-size: 1.2rem;
+            padding-top: 0 !important;
+            margin-top: -2rem !important;
+            /*height: 3rem;*/
+            /*line-height: 2rem;*/
+        }
+
+        .bg {
+            height: 95vh;
+        }
+
+        #support a {
+            display: block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
+    /*4吋：高度介於481px ~ 668px*/
+    @media (min-height: 481px) and (max-height: 668px) {
+        .content {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+
+        .content h2 {
+            /*margin-top: 0.1rem;*/
+            height: 3rem;
+            /*line-height: 2rem;*/
+        }
+
+        .bg {
+            height: 95vh;
+        }
+
+        #support a {
+            display: block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+    }
+
+    /*普通5吋~6.5吋：高度介於669px ~ 1024px之間*/
+    @media (min-height: 669px) and (max-height: 1024px) {
+        .content {
+            font-size: 1.2rem;
+            line-height: 2rem;
+        }
+
+        .content h2 {
+            line-height: 2rem;
+        }
+
+        .bg {
+            height: 95vh;
+        }
+
+        #support a {
+            display: block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+    }
+}
+
+/*平板：寬度介於768px ~ 1024px之間*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    /*水平：高度介於1024px ~ 1365px之間*/
+    @media (max-height: 767px) {
+        .content {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+
+        .content h2 {
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+        }
+
+        .bg {
+            height: 95vh;
+        }
+    }
+    /*水平：高度介於1024px ~ 1365px之間*/
+    @media (min-height: 768px) and (max-height: 1023px) {
+        .content {
+            font-size: 1.5rem;
+            line-height: 4rem;
+        }
+
+        .content h2 {
+            line-height: 6rem;
+        }
+
+        .bg {
+            height: 95vh;
+        }
+    }
+    /*較小的平板：高度介於1024px ~ 1365px之間*/
+    @media (min-height: 1024px) and (max-height: 1365px) {
+        .content {
+            font-size: 1.15rem;
+            line-height: 2.5rem;
+        }
+
+        .content h2 {
+            line-height: 3rem;
+        }
+
+        .bg {
+            height: 50vh;
+        }
+    }
+    /*較大的平板：高度大於等於1366px*/
+    @media (min-height: 1366px) {
+        .content {
+            font-size: 1.55rem;
+            line-height: 3.5rem;
+        }
+
+        .content h2 {
+            font-size: 3rem;
+            line-height: 8rem;
+        }
+
+        .bg {
+            height: 50vh;
+        }
+    }
+}
+
+@media (min-width: 1366px) {
+    .content {
+        font-size: 2rem;
+        line-height: 6rem;
+    }
+
+    .content h2 {
+        font-size: 3rem;
+        line-height: 8rem;
+    }
+
+    .bg {
+        height: 95vh;
+    }
+}

@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC|Roboto+Slab');
+
+* {
+    font-family: 'Roboto Slab', 'Noto Sans TC', sans-serif, serif;
+}
+
+/*平板：寬度介於768px ~ 1200px之間*/
+@media (min-width: 768px) and (max-width: 1200px) {
+    @media (min-height: 1024px) and (max-height: 1365px) {
+        .navbar-brand, .nav-item, .nav-item .btn-link {
+            font-size: 1.1rem;
+        }
+    }
+
+    @media (min-height: 1366px) {
+        .navbar-brand, .nav-item, .nav-item .btn-link {
+            font-size: 1.6rem;
+        }
+    }
+}
+
+body {
+    background: #e2e3e5;
+}
