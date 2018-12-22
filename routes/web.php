@@ -11,6 +11,20 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('pages.index');
+});
+
+Route::get('/agenda', function () {
+    return redirect('/agenda0926');
+});
+
+Route::get('/agenda0926', function () {
+    return view('pages.agenda0926');
+});
+
+Route::get('/agenda0927', function () {
+    return view('pages.agenda0927');
 });
