@@ -5,28 +5,21 @@
 }
 
 .material-icons {
-    font-family: 'Material Icons', serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px; /* Preferred icon size */
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-
-    /* Support for all WebKit browsers. */
-    -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
-    text-rendering: optimizeLegibility;
-
-    /* Support for Firefox. */
     -moz-osx-font-smoothing: grayscale;
-
-    /* Support for IE. */
+    -webkit-font-smoothing: antialiased;
+    direction: ltr;
+    display: inline-block;
+    font-family: 'Material Icons', serif;
     font-feature-settings: 'liga';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 1;
+    text-rendering: optimizeLegibility;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
 }
 
 /*平板：寬度介於768px ~ 1200px之間*/
@@ -49,14 +42,14 @@ body {
 }
 
 .dropdown-menu {
-    position: center;
     background-color: #343A40;
     color: #ffffff;
-    top: 50px;
-    right: auto;
-    left: auto;
-    text-align: left;
     cursor: pointer;
+    left: auto;
+    position: center;
+    right: auto;
+    text-align: left;
+    top: 50px;
 }
 
 .dropdown-toggle-split {
@@ -64,14 +57,14 @@ body {
 }
 
 .dropdown-item {
-    display: block;
-    width: 100%;
-    padding: 0.25rem 1.5rem;
+    border: 0;
     clear: both;
-    font-weight: 400;
     color: #ffffff;
+    display: block;
+    font-weight: 400;
+    outline: 0;
+    padding: 0.25rem 1.5rem;
     text-align: left;
     white-space: normal;
-    border: 0;
-    outline: 0;
+    width: 100%;
 }

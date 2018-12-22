@@ -1,18 +1,18 @@
 ul.timeline {
+    cursor: default;
     list-style-type: none;
     position: relative;
-    cursor: default;
 }
 
 ul.timeline:before {
-    content: "";
     background: #d4d9df;
+    content: "";
     display: inline-block;
+    height: 100%;
+    left: 1.75rem;
     position: absolute;
     top: 0.5rem;
-    left: 1.75rem;
     width: 3px;
-    height: 100%;
     z-index: -1;
 }
 
@@ -23,8 +23,8 @@ ul.timeline > li {
 }
 
 .topic_number {
-    margin: auto;
     color: #e83e8c;
+    margin: auto;
 }
 
 ul.timeline > li > .block > p {
@@ -36,14 +36,14 @@ ul.timeline > li > .block > h5 {
 }
 
 .material-icons {
-    -webkit-transform: translate(-3.125rem, -0.75rem);
     -moz-transform: translate(-3.125rem, -0.75rem);
     -ms-transform: translate(-3.125rem, -0.75rem);
     -o-transform: translate(-3.125rem, -0.75rem);
-    transform: translate(-3.125rem, -0.75rem);
+    -webkit-transform: translate(-3.125rem, -0.75rem);
+    color: #f66D9b;
     font-size: 2.5rem;
     position: absolute;
-    color: #f66D9b;
+    transform: translate(-3.125rem, -0.75rem);
     z-index: 100;
 }
 
@@ -54,13 +54,13 @@ ul.timeline > li > .block > h5 {
     }
 
     ul.timeline:before {
-        content: '';
         background: #d4d9df;
+        content: '';
         display: inline-block;
-        position: absolute;
-        left: 29px;
-        width: 2px;
         height: 100%;
+        left: 29px;
+        position: absolute;
+        width: 2px;
         z-index: -1;
     }
 
