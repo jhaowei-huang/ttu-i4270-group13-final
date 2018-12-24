@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-    <div class="container marketing mt-5 pt-4">
+    <div class="container mt-5 pt-4">
         <div class="row">
             <div class="col-md-11 offset-md-1">
                 <h4>第一天 9/26 (三)</h4>
