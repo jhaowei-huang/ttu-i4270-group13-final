@@ -28,3 +28,7 @@ Route::get('/agenda0926', function () {
 Route::get('/agenda0927', function () {
     return view('pages.agenda0927');
 });
+
+Route::get('/map', function () {
+    return view('pages.map');
+});
