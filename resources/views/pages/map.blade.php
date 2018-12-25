@@ -28,45 +28,50 @@
                     </div>
                 </div>
                 <div class="row mt-3 justify-content-center">
-                    <div id="content" class="content mt-4">
+                    <div id="content" class="content mt-4 mx-4">
                         <h3>2018 TIFE 會議地點</h3>
-                        <h5>台大醫院國際會議中心</h5>
-                        <p class="loss">台大醫院國際會議中心交通網絡極為便捷，地處中央聯合辦公大樓斜對面</p>
-                        <p class="loss">緊臨台大醫院東址，東臨林森南路、西臨中山南路、南臨仁愛路、北臨徐州路</p>
-                        <p class="loss">距台北火車站僅5分鐘車程，距松山機場約20分鐘</p>
-                        <p class="loss">距大眾捷運路網(紅線－台大醫院站 / 藍線－善導寺站)步行約10分鐘即可達</p>
+                        <h5 class="color-red mt-3">台大醫院國際會議中心</h5>
+                        <div class="row mt-3 justify-content-center">
+                            <p>台大醫院國際會議中心交通網絡極為便捷，地處中央聯合辦公大樓斜對面</p>
+                            <p>緊臨台大醫院東址，東臨林森南路、西臨中山南路、南臨仁愛路、北臨徐州路</p>
+                            <p>距台北火車站僅5分鐘車程，距松山機場約20分鐘</p>
+                            <p>距大眾捷運路網(紅線－台大醫院站 / 藍線－善導寺站)步行約10分鐘即可達</p>
+                        </div>
                     </div>
-                    <div id="content-mrt" class="content mt-2 mx-4">
+                    <div id="content-mrt" class="content mt-4 mx-4">
                         <h3>大眾交通工具 - 捷運</h3>
                         <div class="mt-4">
                             <strong class="color-red">淡水北投線(紅線)</strong>
-                            <p class="d-flex mt-2 justify-content-center">台大醫院站二號出口<i
+                            <div class="row mt-3 justify-content-center">台大醫院站二號出口
                                 <i class="fas fa-chevron-right color-red align-middle"></i>常德街約向東走
                                 <i class="fas fa-chevron-right color-red align-middle"></i>左轉中山南路
                                 <i class="fas fa-chevron-right color-red align-middle"></i>右轉徐州路
-                            </p>
+                            </div>
                         </div>
                         <div class="mt-4">
                             <strong class="color-blue">板南線(藍線)</strong>
-                            <p class="d-flex mt-3 justify-content-center">善導寺站二號出口<i class="material-icons color-blue">forward</i>林森南路約向西南走<i
+                            <div class="row mt-3 justify-content-center">善導寺站二號出口
                                 <i class="fas fa-chevron-right color-blue"></i>林森南路約向西南走
                                 <i class="fas fa-chevron-right color-blue"></i>右轉至徐州路
+                            </div>
                         </div>
                     </div>
-                    <div id="content-bus" class="content">
+                    <div id="content-bus" class="content mt-4 mx-3">
                         <h3>大眾交通工具 - 公車</h3>
-                        <p><strong>捷運善導寺站：</strong></p>
-                        <p>0南/15/22/202/212/212直達/220/232/232副/257/262/265/299/605/671</p>
-                        <p><strong>成功中學站(濟南路林森南路口)：</strong></p>
-                        <p>65/297/671</p>
-                        <p><strong>開南商工站(近徐州路口)：</strong></p>
-                        <p>0南/15/22/208/295/297/671</p>
-                        <p><strong>台大醫院站：</strong></p>
-                        <p>22/15/615/227/648/648綠/中山幹線/208/208直達/37/坪林-台北/烏來-台北</p>
-                        <p><strong>仁愛林森路口站(林森南路口)：</strong></p>
-                        <p>295/297/15/22/671</p>
-                        <p><strong>仁愛林森路口站(仁愛路口)：</strong></p>
-                        <p>245/261/37/249/270/263/621/651/630</p>
+                        <div class="shrink mt-4">
+                            <p><strong>捷運善導寺站：</strong></p>
+                            <p>0南/15/22/202/212/212直達/220/232/232副/257/262/265/299/605/671</p>
+                            <p><strong>成功中學站(濟南路林森南路口)：</strong></p>
+                            <p>65/297/671</p>
+                            <p><strong>開南商工站(近徐州路口)：</strong></p>
+                            <p>0南/15/22/208/295/297/671</p>
+                            <p><strong>台大醫院站：</strong></p>
+                            <p>22/15/615/227/648/648綠/中山幹線/208/208直達/37/坪林-台北/烏來-台北</p>
+                            <p><strong>仁愛林森路口站(林森南路口)：</strong></p>
+                            <p>295/297/15/22/671</p>
+                            <p><strong>仁愛林森路口站(仁愛路口)：</strong></p>
+                            <p>245/261/37/249/270/263/621/651/630</p>
+                        </div>
                     </div>
                 </div>
             </div>
