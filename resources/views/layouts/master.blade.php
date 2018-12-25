@@ -9,7 +9,8 @@
 
     <title>{{ $title }} | 2018 TIFE</title>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {{--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">--}}
+    <link href="{{ asset('css/fa.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/global.css') }}" rel="stylesheet">
     @stack('styles')

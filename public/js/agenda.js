@@ -15,14 +15,16 @@ $(document).ready(function () {
         if (new Date().getTime() < (start + longpress)) {
             // short press
             let p = $(this).find('p');
-            let icon = $(this).find('.material-icons');
+            let icon = $(this).find('.fas');
 
             if (p.css("display") === 'block') {
                 p.css('display', 'none');
-                icon.html("keyboard_arrow_up");
+                icon.addClass('fa-angle-up');
+                icon.removeClass('fa-angle-down');
             } else {
                 p.css('display', 'block');
-                icon.html("keyboard_arrow_down");
+                icon.addClass('fa-angle-down');
+                icon.removeClass('fa-angle-up');
             }
         } else {
             // long press

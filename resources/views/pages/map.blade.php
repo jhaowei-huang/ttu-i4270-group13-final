@@ -16,15 +16,15 @@
                 <div class="row justify-content-around">
                     <div id="btn"
                          class="btn col-4 color-primary d-flex justify-content-center align-content-between indicator">
-                        <i class="material-icons mr-1">place</i><span>資訊</span>
+                        <i class="fas fa-map-marker-alt fa-2x"></i><span>資訊</span>
                     </div>
                     <div id="btn-mrt"
                          class="btn col-4 color-secondary d-flex justify-content-center align-content-between indicator">
-                        <i class="material-icons mr-1">train</i><span>捷運</span>
+                        <i class="fas fa-subway fa-2x"></i><span>捷運</span>
                     </div>
                     <div id="btn-bus"
                          class="btn col-4 color-third d-flex justify-content-center align-content-between indicator">
-                        <i class="material-icons mr-1">directions_bus</i><span>公車</span>
+                        <i class="fas fa-bus-alt fa-2x"></i><span>公車</span>
                     </div>
                 </div>
                 <div class="row mt-3 justify-content-center">
@@ -41,15 +41,16 @@
                         <div class="mt-4">
                             <strong class="color-red">淡水北投線(紅線)</strong>
                             <p class="d-flex mt-2 justify-content-center">台大醫院站二號出口<i
-                                    class="material-icons color-red">forward</i>常德街約向東走<i
-                                    class="material-icons color-red">forward</i>左轉中山南路<i
-                                    class="material-icons color-red">forward</i>右轉徐州路
+                                <i class="fas fa-chevron-right color-red align-middle"></i>常德街約向東走
+                                <i class="fas fa-chevron-right color-red align-middle"></i>左轉中山南路
+                                <i class="fas fa-chevron-right color-red align-middle"></i>右轉徐州路
                             </p>
                         </div>
                         <div class="mt-4">
                             <strong class="color-blue">板南線(藍線)</strong>
                             <p class="d-flex mt-3 justify-content-center">善導寺站二號出口<i class="material-icons color-blue">forward</i>林森南路約向西南走<i
-                                    class="material-icons color-blue">forward</i>右轉至徐州路</p>
+                                <i class="fas fa-chevron-right color-blue"></i>林森南路約向西南走
+                                <i class="fas fa-chevron-right color-blue"></i>右轉至徐州路
                         </div>
                     </div>
                     <div id="content-bus" class="content">

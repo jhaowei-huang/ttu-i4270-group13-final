@@ -14,13 +14,13 @@
                 <ul class="timeline">
                     <li class="row">
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>08:30 ~ 09:00</h5>
+                            <h5><i class="fas fa-angle-down"></i>08:30 ~ 09:00</h5>
                             <p>報到及領取資料</p>
                         </div>
                     </li>
                     <li class="row">
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>09:00 ~ 09:45</h5>
+                            <h5><i class="fas fa-angle-down"></i>09:00 ~ 09:45</h5>
                             <p><strong class="topic_number">Topic 06 - </strong>Intelligent Functional Textiles Created
                                 by the Application of Macro-encapsulated Phase Change Material</p>
                             <p><strong>by Dr. Barbara Pause President of Textile Testing & Innovation, LLC (美國)</strong>
@@ -29,7 +29,7 @@
                     </li>
                     <li class="row">
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>09:45 ~ 10:30</h5>
+                            <h5><i class="fas fa-angle-down"></i>09:45 ~ 10:30</h5>
                             <p><strong class="topic_number">Topic 07 - </strong>The Role of Conductive Fibres in
                                 Accelerating
                                 the Transformation of the Functional
@@ -41,13 +41,13 @@
                     </li>
                     <li class="row">
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>10:30 ~ 10:45</h5>
+                            <h5><i class="fas fa-angle-down"></i>10:30 ~ 10:45</h5>
                             <p>休息</p>
                         </div>
                     </li>
                     <li class="row">
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>10:45 ~ 11:30</h5>
+                            <h5><i class="fas fa-angle-down"></i>10:45 ~ 11:30</h5>
                             <p><strong class="topic_number">Topic 08 - </strong>Nanotechnology, a Key Enabling Technology
                                 to Functional and Smart Textiles</p>
                             <p><strong>by Mr. Braz Costa CEO, Center for Nanotechnology and Smart Materials
@@ -56,19 +56,19 @@
                     </li>
                     <li class="row">
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>11:30 ~ 12:30</h5>
+                            <h5><i class="fas fa-angle-down"></i>11:30 ~ 12:30</h5>
                             <p>論壇主題-機能性紡織品</p>
                         </div>
                     </li>
                     <li class="row">
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>12:30 ~ 13:30</h5>
+                            <h5><i class="fas fa-angle-down"></i>12:30 ~ 13:30</h5>
                             <p>午餐</p>
                         </div>
                     </li>
                     <li class="row">
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>13:30 ~ 14:15</h5>
+                            <h5><i class="fas fa-angle-down"></i>13:30 ~ 14:15</h5>
                             <p><strong class="topic_number">Topic 09 - </strong>Canada’s Wearables Industry: Challenges
                                 and Opportunities</p>
                             <p><strong>by Mr. Peter Kallai CEO, intelliFLEX (加拿大)</strong></p>
@@ -76,7 +76,7 @@
                     </li>
                     <li>
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>14:15 ~ 15:00</h5>
+                            <h5><i class="fas fa-angle-down"></i>14:15 ~ 15:00</h5>
                             <p><strong class="topic_number">Topic 10 - </strong>Smart Textiles: Disrupting the Textiles
                                 Industry and Beyond</p>
                             <p><strong>by Mr. Ben Cooper Managing Director, IoClothes (美國)</strong></p>
@@ -84,13 +84,13 @@
                     </li>
                     <li class="row">
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>15:00 ~ 15:20</h5>
+                            <h5><i class="fas fa-angle-down"></i>15:00 ~ 15:20</h5>
                             <p>休息</p>
                         </div>
                     </li>
                     <li class="row">
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>15:20 ~ 16:05</h5>
+                            <h5><i class="fas fa-angle-down"></i>15:20 ~ 16:05</h5>
                             <p><strong class="topic_number">Topic 11 - </strong>Taking E-Textiles From Concept to Mass
                                 Production – How IPC International Standards
                                 for E-Textiles Will Reduce Costs, Accelerate Innovation and Improve Reliability</p>
@@ -100,7 +100,7 @@
                     </li>
                     <li class="row">
                         <div class="block">
-                            <h5><i class="material-icons">keyboard_arrow_down</i>16:05 ~ 17:05</h5>
+                            <h5><i class="fas fa-angle-down"></i>16:05 ~ 17:05</h5>
                             <p>論壇主題-智慧型紡織品</p>
                         </div>
                     </li>
