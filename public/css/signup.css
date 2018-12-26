@@ -1,0 +1,23 @@
+.validation-area {
+    text-align: left;
+    color: #e3342f;
+    white-space: pre-wrap;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 0.85em;
+}
+
+.input-invalid {
+    color: #d9534f;
+    border-color: #d9534f;
+    border-width: 0.15em;
+}
+
+@media (max-width: 767px) {
+    .validation-area {
+        text-align: left;
+        margin-left: 1rem;
+        margin-right: 0.5rem;
+        font-size: 1rem;
+    }
+}

@@ -52,5 +52,4 @@ Route::get('/signup', function () {
     return view('pages.auth.signup');
 });
 
-Route::post('/signup', function () {
-})->name('signup');;
+Route::post('/signup', 'Auth\RegisterController@signup')->name('signup.post');
