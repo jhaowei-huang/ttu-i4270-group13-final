@@ -1,4 +1,4 @@
-@extends('layouts.master', ['title' => '登入', 'current' => ''])
+@extends('layouts.master', ['title' => '登入會員', 'current' => ''])
 
 @push('styles')
     <link href="{{asset('css/signin.css')}}" rel="stylesheet">
@@ -8,7 +8,7 @@
     <div class="container mt-5 pt-4">
         <div class="row justify-content-center">
             <div class="col-12 col-md-4 align-content-center">
-                <h3 class="text-center mb-3">登入</h3>
+                <h3 class="text-center mb-3">登入會員</h3>
                 <form method="POST" action="{{ route('signin') }}">
                     @csrf
                     <div class="form-group">
