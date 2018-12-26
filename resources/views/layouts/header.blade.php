@@ -13,8 +13,8 @@
                 <a class="nav-link dropdown-toggle-split" id="agendaDropdownMenuLink" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">議程</a>
                 <div class="dropdown-menu float-left border-0" aria-labelledby="agendaDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ URL::to('/agenda0926') }}">Day 01: 9/26 (Wed.)</a>
-                    <a class="dropdown-item" href="{{ URL::to('/agenda0927') }}">Day 02: 9/27 (Thr.)</a>
+                    <a class="dropdown-item" href="{{ URL::to('/agenda0926') }}">第一天 9/26 (三)</a>
+                    <a class="dropdown-item" href="{{ URL::to('/agenda0927') }}">第二天 9/27 (四)</a>
                 </div>
             </li>
             <li class="nav-item @php if($current == 'map') echo 'active mr-auto' @endphp">

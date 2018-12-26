@@ -36,3 +36,21 @@ Route::get('/map', function () {
 Route::get('/speaker', function () {
     return view('pages.speaker');
 });
+
+Route::get('/registration', function () {
+    return view('pages.registration');
+});
+
+Route::get('/signin', function () {
+    return view('pages.auth.signin');
+});
+
+Route::post('/signin', function () {
+})->name('signin');
+
+Route::get('/signup', function () {
+    return view('pages.auth.signup');
+});
+
+Route::post('/signup', function () {
+})->name('signup');;
