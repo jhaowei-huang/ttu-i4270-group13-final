@@ -31,7 +31,7 @@
             </li>
             @guest
                 <li class="nav-item">
-                    <button class="btn btn-link ml-sm-0 nav-link-auth account-login">[ 登入 / 註冊 ]</button>
+                    <button class="btn btn-link btn-signin ml-sm-0 nav-link-auth">[ 登入 / 註冊 ]</button>
                 </li>
             @endguest
             @auth

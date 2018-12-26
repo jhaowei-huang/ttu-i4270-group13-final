@@ -32,3 +32,7 @@ Route::get('/agenda0927', function () {
 Route::get('/map', function () {
     return view('pages.map');
 });
+
+Route::get('/speaker', function () {
+    return view('pages.speaker');
+});

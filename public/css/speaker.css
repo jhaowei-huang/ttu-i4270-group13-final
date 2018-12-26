@@ -1,0 +1,43 @@
+.mainContainer {
+    width: 100vw;
+    height: 100%;
+}
+
+.card-img-top {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    width: 12em;
+    height: auto;
+}
+
+.card {
+    height: 23.5rem;
+    text-align: center;
+}
+
+.card-name,
+.card-job {
+    width: auto;
+    line-height: 0.8rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.btn-group {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#speakerModalCenterAvatar {
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: 100%;
+}
+
+#speakerModalCenterText {
+    text-align: justify;
+    font-size: 0.8rem;
+}
