@@ -7,7 +7,7 @@
 @section('content')
     <div class="container mt-5 pt-4">
         <div class="row justify-content-around">
-            <div class="col-12 col-md-6 align-content-center">
+            <div class="col-12 align-content-center">
                 <h3 class="text-center mb-3">註冊會員</h3>
                 <form id="form-signup" method="POST">
                     @csrf
@@ -136,7 +136,7 @@
                         <div class="g-recaptcha"
                              data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
                     </div>
-                    <div class="validation-area my-2"></div>
+                    <div class="validation-area my-2 text-center"></div>
                     <div class="row justify-content-center my-2">
                         <button type="submit" class="btn btn-primary mx-3 mx-md-0 flex-fill flex-md-grow-0"
                                 id="btn-submit" name="btn-submit">註冊
