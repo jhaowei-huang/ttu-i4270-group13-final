@@ -12,6 +12,7 @@ use App\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -46,7 +47,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest')->except('verifyUser');
     }
 
     /**
@@ -143,5 +144,45 @@ class RegisterController extends Controller
         Mail::to($user->email)->send(new VerifyUserEmail());
 
         return response()->json(['redirect' => '/verifyUserEmail']);
+    }
+
+    public function verifyUser($user_id, $token)
+    {
+        $status = 0;
+        $username = '';
+        $email = '';
+        $emailVerify = EmailVerify::where('$user_id', $user_id)->first();
+
+        if (isset($emailVerify)) {
+            if (!$emailVerify->token != $token) {
+                // 若驗證信的token與資料庫中的token不相符，則驗證失敗
+                // 必須以最新收到的驗證信為主
+                $status = 0;
+            } else {
+                $user = $emailVerify->user;
+
+                $username = $user->username;
+                $email = $user->email;
+
+                if (!$user->email_verified) {
+                    $user->email_verified = 1;
+                    $user->save();
+                    $status = 1;
+                } else {
+                    $status = 2;
+                }
+            }
+        } else {
+            $status = 3;
+        }
+
+        return redirect('verifyUserEmailResult')
+            ->with([
+                'status' => $status,
+                'username' => $username,
+                'email' => $email]);
+//        'pages.auth.verifyUserEmailResult')
+
+        // return redirect('/login')->with('status', $status);
     }
 }

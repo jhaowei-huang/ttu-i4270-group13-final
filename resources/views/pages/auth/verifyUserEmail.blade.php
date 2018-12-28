@@ -1,7 +1,6 @@
-@extends('layouts.master', ['title' => '', 'current' => ''])
+@extends('layouts.master', ['title' => '帳號信箱驗證', 'current' => ''])
 
 @push('styles')
-    {{--    <link href="{{asset('css/signup.css')}}" rel="stylesheet">--}}
 @endpush
 
 @section('content')
@@ -11,7 +10,6 @@
                 <div class="card">
                     @auth
                         <div class="card-header">帳號信箱驗證</div>
-
                         <div class="card-body">
                             @if (Auth::user()->email_verified == false)
                                 <p>{{ Auth::user()->name }} 您好</p>
@@ -29,8 +27,7 @@
                                                 <span class="input-group-text"><i class="fa fa-at"></i></span>
                                             </div>
                                             <input type="email" class="form-control input-signup" placeholder="email"
-                                                   id="email"
-                                                   name="email">
+                                                   id="email" name="email">
                                         </div>
                                     </div>
                                     <div class="validation-area my-2"></div>
@@ -44,7 +41,8 @@
                             @else
                                 <p>{{ Auth::user()->name }} 您好</p>
                                 <p>您的email： <strong style="color: #c51f1a">{{ Auth::user()->email }}</strong></p>
-                                <p>驗證完成</p>
+                                <p>已經驗證完成</p>
+                                <p>現在可以</p>
                                 @include('layouts.function', ['all'=>false, 'register'=>true, 'inquire'=>true, 'cancel'=>true])
                             @endif
                         </div>
@@ -53,7 +51,7 @@
                         <div class="card-header">很抱歉，目前沒有登入喔</div>
                         <div class="card-body">
                             <p>您可以執行下列動作：</p>
-                            @include('layouts.function')
+                            @include('layouts.function', ['all'=>false, 'signup'=>true, 'signin'=>true])
                         </div>
                     @endguest
                 </div>
@@ -63,5 +61,4 @@
 @endsection
 
 @push('scripts')
-    {{--    <script src='{{ asset('js/signup.js') }}'></script>--}}
 @endpush

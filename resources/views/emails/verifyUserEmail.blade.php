@@ -20,14 +20,16 @@
                 <div class="card-body">
                     <p>{{ Auth::user()->name }} 您好</p>
                     <p>我們最近收到您註冊會員的請求</p>
-                    <p>為了啟動帳號，請點擊下方按鈕</p>
+                    <p>為了啟動帳號，請點擊下方連結</p>
                     <div class="row justify-content-center">
                         <a class="btn btn-sm btn-outline-primary col-6"
-                           href="{{ url('/verifyUserEmail/', Auth::user()->emailVerify->token) }}">點我進行驗證</a>
+                           href="{{ url('/verifyUserEmail/' . Auth::user()->user_id . '/' . Auth::user()->emailVerify->token) }}">點我進行驗證</a>
                     </div>
                     <p>為保護您的帳號安全，請勿將該信件轉寄、轉發給其他人</p>
                     <p>若您最近沒有註冊為本站會員</p>
                     <p>請勿理會此信件</p>
+                    <br>
+                    <p>大同大學軟體服務設計的創新實務第13組 敬啟</p>
                 </div>
             </div>
         </div>

@@ -60,3 +60,8 @@ Route::post('/signup', 'Auth\RegisterController@signup')->name('signup.post');
 Route::get('/verifyUserEmail', function () {
     return view('pages.auth.verifyUserEmail');
 })->name('verifyUserEmail');
+
+Route::get('/verifyUserEmail/{user_id}/{token}', 'Auth\RegisterController@verifyUser');
+//Route::get('/verifyUserEmailResult', function () {
+//    return view('pages.auth.verifyUserEmailResult');
+//})->name('verifyUserEmailResult');
