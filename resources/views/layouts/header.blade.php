@@ -45,15 +45,14 @@
                        style="right: auto; left: 0;">[ {{ Auth::user()->name }} ]</a>
                     <div class="dropdown-menu dropdown-menu-right border-0"
                          aria-labelledby="agendaDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ URL::to('/profile') }}">個人檔案</a>
-                        <a class="dropdown-item" href="{{ URL::to('/registration/agenda') }}">報名議程</a>
-                        <a class="dropdown-item" href="{{ URL::to('/registration/inquire') }}">查詢報名</a>
-                        <a class="dropdown-item" href="{{ URL::to('/registration/cancel') }}">取消報名</a>
-                        <form id="logoutForm" action="{{ route('logout') }}" method="POST">
+                        {{--<a class="dropdown-item" href="{{ URL::to('/profile') }}">個人檔案</a>--}}
+                        {{--<a class="dropdown-item" href="{{ URL::to('/registration/agenda') }}">報名議程</a>--}}
+                        {{--<a class="dropdown-item" href="{{ URL::to('/registration/inquire') }}">查詢報名</a>--}}
+                        {{--<a class="dropdown-item" href="{{ URL::to('/registration/cancel') }}">取消報名</a>--}}
+                        <form action="{{ route('signout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="dropdown-item btn btn-link mx-auto disableWhenSubmit"
-                                    name="btnLogin"
-                                    id="btnLogin"> 登出
+                            <button type="submit" class="dropdown-item btn btn-link mx-auto"
+                                    name="btn-signout"> 登出
                             </button>
                         </form>
 

@@ -48,6 +48,9 @@ Route::get('/signin', function () {
 Route::post('/signin', function () {
 })->name('signin');
 
+// 登出
+Route::post('/signout', 'Auth\LoginController@signout')->name('signout');
+
 Route::get('/signup', function () {
     return view('pages.auth.signup');
 });
