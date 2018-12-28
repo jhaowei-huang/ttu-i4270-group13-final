@@ -53,3 +53,7 @@ Route::get('/signup', function () {
 });
 
 Route::post('/signup', 'Auth\RegisterController@signup')->name('signup.post');
+
+Route::get('/verifyUserEmail', function () {
+    return view('pages.auth.verifyUserEmail');
+})->name('verifyUserEmail');

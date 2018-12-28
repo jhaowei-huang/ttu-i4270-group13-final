@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
+
+use App\EmailVerify;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmail;
+use App\Mail\VerifyUserEmail;
 use App\Rules\Captcha;
 use App\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Webpatser\Uuid\Uuid;
 
@@ -98,8 +103,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'user_id' => Uuid::generate(4),
+        $user_id = Uuid::generate(4);
+        $user = User::create([
+            'user_id' => $user_id,
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
             'email' => $data['email'],
@@ -110,8 +116,16 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'phone_ext' => $data['phone_ext'],
             'fax' => $data['fax'],
-            'fax_ext' => $data['fax_ext'],
+            'fax_ext' => $data['fax_ext']
         ]);
+
+        $verifyUser = EmailVerify::create([
+            'email_verify_id' => Uuid::generate(4),
+            'user_id' => $user_id,
+            'token' => Uuid::generate(1)
+        ]);
+
+        return $user;
     }
 
     /**
@@ -125,6 +139,9 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
         $this->guard()->login($user);
-        return response()->json([]);
+
+        Mail::to($user->email)->send(new VerifyUserEmail());
+
+        return response()->json(['redirect' => '/verifyUserEmail']);
     }
 }

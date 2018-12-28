@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $primaryKey = 'user_id';
+
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -28,6 +33,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
+
+    public function emailVerify()
+    {
+        return $this->hasOne('App\EmailVerify', 'user_id', 'user_id');
+    }
 }

@@ -26,12 +26,12 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             */
             $table->string('user_id')->unique();
-            // required
+            // 必填欄位
             $table->string('username')->nullable(false)->unique();
             $table->string('email')->nullable(false)->unique();
             $table->string('password')->nullable(false);
             $table->string('name')->nullable(false);
-            // optional
+            // 選填欄位
             $table->string('address', 500)->nullable(true);
             $table->string('department')->nullable(true);
             $table->string('position')->nullable(true);
@@ -39,7 +39,8 @@ class CreateUsersTable extends Migration
             $table->string('phone_ext', 10)->nullable(true);
             $table->string('fax', 10)->nullable(true);
             $table->string('fax_ext', 10)->nullable(true);
-            $table->timestamp('email_verified_at')->nullable();
+            // 驗證相關欄位
+            $table->boolean('email_verified')->nullable(false)->default(0);
             $table->string('remember_token')->nullable(true);
             $table->timestamps();
         });

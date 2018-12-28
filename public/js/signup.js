@@ -1,7 +1,6 @@
 function setTooltip() {
     // 增加欄位的輸入提示
     $('.input-signup').each(function () {
-        console.log($(this).attr('id'));
         let content = sigup_tooltip[$(this).attr('id')];
         $(this).popover({
             placement: 'top',
@@ -32,12 +31,11 @@ function waiting(status = true) {
 
 function success(response) {
     try {
-        waiting(false);
+        // 若註冊成功就跳轉到指定頁面
+        window.location.href = response.redirect;
     } catch (e) {
         console.log(e);
         console.log(response);
-    } finally {
-        waiting(false);
     }
 }
 
