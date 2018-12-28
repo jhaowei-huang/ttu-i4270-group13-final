@@ -17,7 +17,7 @@ $(document).ready(function () {
             let p = $(this).find('p');
             let icon = $(this).find('.fas');
 
-            if (p.css("display") === 'block') {
+            if (p.css('display') === 'block') {
                 p.css('display', 'none');
                 icon.addClass('fa-angle-up');
                 icon.removeClass('fa-angle-down');
