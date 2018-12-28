@@ -13,11 +13,24 @@
     border-width: 0.15em;
 }
 
+#loading {
+    display: none;
+    margin-right: -1.5rem;
+    max-width: 2rem;
+    max-height: 2rem;
+}
+
 @media (max-width: 767px) {
     .validation-area {
         text-align: left;
         margin-left: 1rem;
         margin-right: 0.5rem;
         font-size: 1rem;
+    }
+
+    #loading {
+        margin-right: -1rem;
+        max-width: 1.5rem;
+        max-height: 1.5rem;
     }
 }

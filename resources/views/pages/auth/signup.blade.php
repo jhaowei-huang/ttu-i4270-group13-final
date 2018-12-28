@@ -136,8 +136,11 @@
                         <div class="g-recaptcha"
                              data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
                     </div>
-                    <div class="validation-area my-2 text-center"></div>
-                    <div class="row justify-content-center my-2">
+                    <div class="row mb-2 justify-content-center">
+                        <img id="loading" src="{{ asset('images/loading.gif') }}" alt="..."/>
+                        <div class="validation-area mt-1 mt-md-2"></div>
+                    </div>
+                    <div class="row justify-content-center my-0 my-md-2">
                         <button type="submit" class="btn btn-primary mx-3 mx-md-0 flex-fill flex-md-grow-0"
                                 id="btn-submit" name="btn-submit">註冊
                         </button>

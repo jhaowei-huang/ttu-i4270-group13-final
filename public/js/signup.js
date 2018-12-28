@@ -17,14 +17,16 @@ function waiting(status = true) {
     if (status) {
         // 等待資料傳輸中
         $('.validation-area').text('驗證中，請稍後');
+        $('#loading').css('display', 'block');
         $('input').prop('disabled', true);
-        $('.btn-signup').prop('disabled', true);
+        $('#btn-submit').prop('disabled', true);
     } else {
         // 資料傳輸完畢
         $('.input-invalid').removeClass('input-invalid');
         $('.validation-area').text('');
+        $('#loading').css('display', 'none');
         $('input').prop('disabled', false);
-        $('.btn-signup').prop('disabled', false);
+        $('#btn-submit').prop('disabled', false);
         grecaptcha.reset();
     }
 }
@@ -42,21 +44,23 @@ function success(response) {
 function error(jqXHR, exception) {
     let validation = $('.validation-area');
 
-    waiting(false);
+    setTimeout(function () {
+        waiting(false);
 
-    if (jqXHR.status === 422) {
-        // 狀態422為Laravel預設的表單驗證錯誤狀態
-        let errors = jqXHR.responseJSON.errors;
+        if (jqXHR.status === 422) {
+            // 狀態422為Laravel預設的表單驗證錯誤狀態
+            let errors = jqXHR.responseJSON.errors;
 
-        for (let key in errors) {
-            if (errors[key] !== '' && errors.hasOwnProperty(key)) {
-                validation.append(errors[key] + '\n');
-                $('#' + key).addClass('input-invalid');
+            for (let key in errors) {
+                if (errors[key] !== '' && errors.hasOwnProperty(key)) {
+                    validation.append(errors[key] + '\n');
+                    $('#' + key).addClass('input-invalid');
+                }
             }
+        } else {
+            validation.append(jqXHR.status, '：伺服器錯誤');
         }
-    } else {
-        validation.append(jqXHR.status, '：伺服器錯誤');
-    }
+    }, 1000);
 }
 
 $(document).ready(function () {
