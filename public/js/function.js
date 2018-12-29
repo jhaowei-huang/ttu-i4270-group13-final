@@ -10,10 +10,8 @@ $(document).ready(function () {
             window.location.href = '/signin';
         } else if (id === 'btn-signup') {
             window.location.href = '/signup';
+        } else if (id === 'btn-forgetPassword') {
+            window.location.href = '/forgetPassword';
         }
-    });
-
-    $('.btn-signin').click(function (e) {
-        window.location.href = '/signin';
     });
 });
