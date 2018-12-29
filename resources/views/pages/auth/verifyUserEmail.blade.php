@@ -1,6 +1,7 @@
 @extends('layouts.master', ['title' => '帳號信箱驗證', 'current' => ''])
 
 @push('styles')
+    <link href="{{ asset('css/verifyUserEmail.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -12,25 +13,34 @@
                         <div class="card-header">帳號信箱驗證</div>
                         <div class="card-body">
                             @if (Auth::user()->email_verified == false)
+                                @if(Session::has('message'))
+                                    <div class="d-flex flex-fill mb-3 justify-content-center indicator">
+                                        <i class="far fa-smile fa-2x success"></i>
+                                        <span class="mt-1 success">{{ Session::pull('message')}}</span>
+                                    </div>
+                                @endif
                                 <p>{{ Auth::user()->name }} 您好</p>
                                 <p>系統已經寄送一封認證信至 <strong style="color: #c51f1a">{{ Auth::user()->email }}</strong></p>
                                 <p>大約數分鐘內就會收到，也請留意是否不小心被分類為垃圾信件</p>
-                                <p>您必須要認證email才能進行報名</p>
+                                <p>您必須要認證email才能進行後續動作</p>
                                 <br>
                                 <p>若您的email填寫錯誤或是遲遲沒有收到，請在下方重新輸入email</p>
                                 <p>系統將會重新寄送</p>
-                                <form id="form-updateEmail" method="POST">
+                                <form id="form-resendVerifyEmail" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-at"></i></span>
                                             </div>
-                                            <input type="email" class="form-control input-signup" placeholder="email"
+                                            <input type="email" class="form-control" placeholder="email"
                                                    id="email" name="email">
                                         </div>
                                     </div>
-                                    <div class="validation-area my-2"></div>
+                                    <div class="row mb-2 justify-content-center">
+                                        <img id="loading" src="{{ asset('images/loading.gif') }}" alt="..."/>
+                                        <div class="validation-area mt-1 mt-md-2"></div>
+                                    </div>
                                     <div class="row justify-content-center my-2">
                                         <button type="submit"
                                                 class="btn btn-primary mx-3 mx-md-0 flex-fill flex-md-grow-0"
@@ -41,8 +51,7 @@
                             @else
                                 <p>{{ Auth::user()->name }} 您好</p>
                                 <p>您的email： <strong style="color: #c51f1a">{{ Auth::user()->email }}</strong></p>
-                                <p>已經驗證完成</p>
-                                <p>現在可以</p>
+                                <p><i class="far fa-smile fa-2x success"></i>已經驗證完成</p>
                                 @include('layouts.function', ['all'=>false, 'register'=>true, 'inquire'=>true, 'cancel'=>true])
                             @endif
                         </div>
@@ -61,4 +70,5 @@
 @endsection
 
 @push('scripts')
+    <script src='{{ asset('js/verifyUserEmail.js') }}'></script>
 @endpush
