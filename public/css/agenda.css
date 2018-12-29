@@ -35,7 +35,7 @@ ul.timeline > li > .block > h5 {
     color: #2d995b;
 }
 
-.fas {
+li.row > div.block > h5 > i.fas {
     color: #f66D9b;
     font-size: 2.5rem;
     position: absolute;

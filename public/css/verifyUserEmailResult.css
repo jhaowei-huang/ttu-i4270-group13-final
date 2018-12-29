@@ -1,0 +1,11 @@
+i {
+    margin: 0 0.5rem 0 0.5rem;
+}
+
+.error {
+    color: #e3342f;
+}
+
+.success {
+    color: #2d995b;
+}

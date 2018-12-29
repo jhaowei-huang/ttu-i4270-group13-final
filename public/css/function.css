@@ -1,60 +1,65 @@
-#btn-register, #btn-inquire, #btn-cancel, #btn-signin, #btn-signup, #btn-forget {
+div.row > #btn-register,
+div.row > #btn-inquire,
+div.row > #btn-cancel,
+div.row > #btn-signin,
+div.row > #btn-signup,
+div.row > #btn-forgetPassword {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     border: none;
     background: transparent;
 }
 
-#btn-register {
+div.row > #btn-register {
     color: #171219;
 }
 
-#btn-register:hover {
+div.row > #btn-register:hover {
     color: white;
     background: #171219;
 }
 
-#btn-inquire {
+div.row > #btn-inquire {
     color: #4c110f;
 }
 
-#btn-inquire:hover {
+div.row > #btn-inquire:hover {
     color: white;
     background: #4c110f;
 }
 
-#btn-cancel {
+div.row > #btn-cancel {
     color: #e3342f;
 }
 
-#btn-cancel:hover {
+div.row > #btn-cancel:hover {
     color: white;
     background: #e3342f;
 }
 
-#btn-signin {
+div.row > #btn-signin {
     color: #2d995b;
 }
 
-#btn-signin:hover {
+div.row > #btn-signin:hover {
     color: white;
     background: #2d995b;
 }
 
-#btn-signup {
+div.row > #btn-signup {
     color: #1d68a7;
 }
 
-#btn-signup:hover {
+div.row > #btn-signup:hover {
     color: white;
     background: #1d68a7;
 }
 
-#btn-forget {
+div.row > #btn-forgetPassword {
     color: #2a4494;
 }
 
-#btn-forget:hover {
+div.row > #btn-forgetPassword:hover {
     color: white;
     background: #2a4494;
 }

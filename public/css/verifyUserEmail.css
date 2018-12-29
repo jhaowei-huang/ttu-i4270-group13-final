@@ -1,0 +1,42 @@
+i {
+    margin: 0 0.5rem 0 0.5rem;
+}
+
+.error {
+    color: #e3342f;
+}
+
+.success {
+    color: #2d995b;
+}
+
+.validation-area {
+    text-align: left;
+    color: #e3342f;
+    white-space: pre-wrap;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-size: 0.85em;
+}
+
+#loading {
+    display: none;
+    margin-right: -1.5rem;
+    max-width: 2rem;
+    max-height: 2rem;
+}
+
+@media (max-width: 767px) {
+    .validation-area {
+        text-align: left;
+        margin-left: 1rem;
+        margin-right: 0.5rem;
+        font-size: 1rem;
+    }
+
+    #loading {
+        margin-right: -1rem;
+        max-width: 1.5rem;
+        max-height: 1.5rem;
+    }
+}
