@@ -17,7 +17,7 @@ class CreateEmailVerifiesTable extends Migration
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
 
-            $table->string('email_verify_id')->unique();
+            $table->string('email_verify_id')->unique()->primary();
             $table->string('user_id');
             $table->foreign('user_id')->references('user_id')->on('users');
             $table->string('token');

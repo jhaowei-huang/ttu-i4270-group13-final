@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             */
-            $table->string('user_id')->unique();
+            $table->string('user_id')->unique()->primary();
             // 必填欄位
             $table->string('username')->nullable(false)->unique();
             $table->string('email')->nullable(false)->unique();
