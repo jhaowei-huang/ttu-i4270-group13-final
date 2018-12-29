@@ -146,7 +146,11 @@
                         </button>
                     </div>
                 </form>
-                @include('layouts.function', ['all' => false, 'signin' => true])
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6">
+                        @include('layouts.function', ['align' => 'justify-content-center', 'all' => false, 'signin' => true])
+                    </div>
+                </div>
             </div>
         </div>
     </div>

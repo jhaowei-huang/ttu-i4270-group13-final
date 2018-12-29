@@ -44,23 +44,21 @@ function success(response) {
 function error(jqXHR, exception) {
     let validation = $('.validation-area');
 
-    setTimeout(function () {
-        waiting(false);
+    waiting(false);
 
-        if (jqXHR.status === 422) {
-            // 狀態422為Laravel預設的表單驗證錯誤狀態
-            let errors = jqXHR.responseJSON.errors;
+    if (jqXHR.status === 422) {
+        // 狀態422為Laravel預設的表單驗證錯誤狀態
+        let errors = jqXHR.responseJSON.errors;
 
-            for (let key in errors) {
-                if (errors[key] !== '' && errors.hasOwnProperty(key)) {
-                    validation.append(errors[key] + '\n');
-                    $('#' + key).addClass('input-invalid');
-                }
+        for (let key in errors) {
+            if (errors[key] !== '' && errors.hasOwnProperty(key)) {
+                validation.append(errors[key] + '\n');
+                $('#' + key).addClass('input-invalid');
             }
-        } else {
-            validation.append(jqXHR.status, '：伺服器錯誤');
         }
-    }, 1000);
+    } else {
+        validation.append(jqXHR.status, '：伺服器錯誤');
+    }
 }
 
 $(document).ready(function () {
