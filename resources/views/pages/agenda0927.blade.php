@@ -1,4 +1,4 @@
-@extends('layouts.master', ['title' => '9/26 議程', 'current' => 'agenda'])
+@extends('layouts.master', ['title' => '9/27 議程', 'current' => 'agenda'])
 
 @push('styles')
     <link href="{{ asset('css/agenda.css') }}" rel="stylesheet">
@@ -74,7 +74,7 @@
                             <p><strong>by Mr. Peter Kallai CEO, intelliFLEX (加拿大)</strong></p>
                         </div>
                     </li>
-                    <li>
+                    <li class="row">
                         <div class="block">
                             <h5><i class="fas fa-angle-down"></i>14:15 ~ 15:00</h5>
                             <p><strong class="topic_number">Topic 10 - </strong>Smart Textiles: Disrupting the Textiles
