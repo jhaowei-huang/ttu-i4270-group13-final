@@ -31,31 +31,33 @@
             </li>
             @guest
                 <li class="nav-item">
-                    <button class="btn btn-link btn-signin ml-sm-0 nav-link-auth">[ 登入 / 註冊 ]</button>
+                    <a class="btn btn-link dropdown-toggle" id="agendaDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">登入/註冊</a>
+                    <div class="dropdown-menu border-0 dropdown-menu-right"
+                         aria-labelledby="agendaDropdownMenuLink">
+                        @include('layouts.function', ['style' => 'css/function-dropdown.css'])
+                    </div>
                 </li>
             @endguest
             @auth
-                {{--<li class="nav-item">--}}
-                {{--<a class="btn btn-link ml-sm-0 nav-link-auth" href="{{ URL::to('logout') }}">[ 登出 ]</a>--}}
-                {{--</li>--}}
-
                 <li class="nav-item">
-                    <a class="nav-link dropdown-toggle nav-link-auth" id="agendaDropdownMenuLink" data-toggle="dropdown"
+                    <a class="btn btn-link dropdown-toggle" id="agendaDropdownMenuLink" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false"
-                       style="right: auto; left: 0;">[ {{ Auth::user()->name }} ]</a>
+                       style="right: auto; left: 0; color: #2d995b;">[ {{ Auth::user()->name }} ]</a>
                     <div class="dropdown-menu dropdown-menu-right border-0"
                          aria-labelledby="agendaDropdownMenuLink">
-                        {{--<a class="dropdown-item" href="{{ URL::to('/profile') }}">個人檔案</a>--}}
-                        {{--<a class="dropdown-item" href="{{ URL::to('/registration/agenda') }}">報名議程</a>--}}
-                        {{--<a class="dropdown-item" href="{{ URL::to('/registration/inquire') }}">查詢報名</a>--}}
-                        {{--<a class="dropdown-item" href="{{ URL::to('/registration/cancel') }}">取消報名</a>--}}
+                        @include('layouts.function', [
+                            'signin' => false,
+                            'signup' => false,
+                            'forget' => false,
+                            'style' => 'css/function-dropdown.css'
+                        ]);
                         <form action="{{ route('signout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="dropdown-item btn btn-link mx-auto"
+                            <button type="submit" class="dropdown-item btn btn-link btn-sm"
                                     name="btn-signout"> 登出
                             </button>
                         </form>
-
                     </div>
                 </li>
             @endauth

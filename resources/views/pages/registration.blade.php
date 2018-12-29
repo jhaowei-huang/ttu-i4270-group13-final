@@ -25,7 +25,12 @@
                 <p><i class="fas fa-caret-right"></i>演講語言均為英文；現場有同步翻譯且每場次提供耳機(數量有限)，依到場順序 借完為止，請攜帶身份證件以借用同步翻譯耳機。</p>
                 <p><i class="fas fa-caret-right"></i>報名截止日期：2018/9/20 (星期四)</p>
                 <h4 class="mt-3">報名註冊：</h4>
-                @include('layouts.function')
+                @guest
+                    @include('layouts.function')
+                @endguest
+                @auth
+                    @include('layouts.function', ['all' => false, 'register' => true, 'inquire' => true, 'cancel' => true])
+                @endauth
             </div>
         </div>
     </div>
