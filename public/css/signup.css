@@ -20,6 +20,14 @@
     max-height: 2rem;
 }
 
+.input-group .input-group-prepend {
+    flex: 0 0 18%;
+}
+
+.input-group .input-group-text {
+    width: 100%;
+}
+
 @media (max-width: 767px) {
     .validation-area {
         text-align: left;
