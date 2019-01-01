@@ -18,8 +18,8 @@ class CreatePasswordResetsTable extends Migration
             $table->collation = 'utf8_unicode_ci';
 
             $table->string('password_reset_id')->unique()->primary();
-            $table->string('email');
-            $table->foreign('email')->references('email')->on('users');
+            $table->string('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users');
             $table->string('token');
             $table->timestamps();
         });
