@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 Route::group(['middleware' => ['web']], function () {
     // 靜態網頁
@@ -77,17 +78,18 @@ Route::group(['middleware' => ['web']], function () {
     // 忘記密碼畫面
     Route::get('/forgetPassword', function () {
         return view('pages.auth.forgetPassword');
-    });
+    })->middleware('guest');
     // 忘記密碼，並寄送含有重設密碼連結的信
     Route::post('/forgetPassword', 'Auth\PasswordController@forgetPassword');
     // 點擊重設密碼信的連結
     Route::get('/resetPassword', 'Auth\PasswordController@showResetPassword')->name('resetPassword');
     Route::get('/resetPassword/{user_id}/{token}', 'Auth\PasswordController@verifyResetPassword');
     Route::post('/resetPassword/', 'Auth\PasswordController@resetPassword');
+
+    // 個人檔案相關
+    Route::get('/profile', function () {
+        $profile_message = Session::get('profile_message', '');
+        return view('pages.auth.profile')->with(['profile_message' => $profile_message]);
+    })->middleware('auth');
+    Route::post('/profile', 'Auth\UserProfileController@updateProfile');
 });
-
-
-
-
-
-

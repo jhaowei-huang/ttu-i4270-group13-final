@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\EmailVerify;
 use App\Http\Controllers\Controller;
 use App\Mail\VerifyUserEmail;
+use App\Rules\Captcha;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -74,8 +75,57 @@ class UserProfileController extends Controller
         return response()->json(['redirect' => '/verifyUserEmail']);
     }
 
-    public function test()
+    protected function profileValidator($data)
     {
+        return Validator::make($data, [
+            'g-recaptcha-response' => [new Captcha()],
+            'name' => ['required', "regex:/^[\x{4e00}-\x{9fa5}]{2,}$|^[a-zA-Z0-9]{3,}$|[^!@#$%\^&*()_\-=+~`,.<>\]\[\{\}\|\'\"\/\\\\\;:]{3,}$/u"],
+            'address' => 'nullable | string',
+            'department' => 'nullable | string',
+            'position' => 'nullable | string',
+            'phone' => ['nullable', 'max:10', 'regex:/^[0]{1}[0-9]{1,3}[0-9]{5,8}$/'],
+            'phone_ext' => ['nullable', 'max:10', 'regex:/^[0-9]{0,10}$/'],
+            'fax' => ['nullable', 'max:10', 'regex:/^[0]{1}[0-9]{1,3}[0-9]{5,8}$/'],
+            'fax_ext' => ['nullable', 'max:10', 'regex:/^[0-9]{0,10}$/']
+        ], [
+            'name.*' => trans('custom_validation.error_name_validation'),
+            'address.*' => trans('custom_validation.error_address_validation'),
+            'department.*' => trans('custom_validation.error_department_validation'),
+            'position.*' => trans('custom_validation.error_position_validation'),
+            'phone.*' => trans('custom_validation.error_phone_validation'),
+            'phone_ext.*' => trans('custom_validation.error_phone_ext_validation'),
+            'fax.*' => trans('custom_validation.error_fax_validation'),
+            'fax_ext.*' => trans('custom_validation.error_fax_ext_validation'),
+        ]);
+    }
 
+    public function updateProfile(Request $request)
+    {
+        $this->profileValidator($request->all())->validate();
+
+        $user = Auth::user();
+
+        try {
+            // 若符合規則，便會寫入資料庫
+            User::where('user_id', $user->user_id)->first()
+                ->update([
+                    'name' => $request->name,
+                    'address' => $request->address,
+                    'department' => $request->department,
+                    'job_title' => $request->job_title,
+                    'phone' => $request->phone,
+                    'phone_ext' => $request->phone_ext,
+                    'fax' => $request->fax,
+                    'fax_ext' => $request->fax_ext,
+                ]);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+            return response()->json(['error' => '找不到該帳號']);
+        }
+
+        session(['profile_message' => '個人資料更新成功']);
+
+        return response()->json([
+            'redirect' => '/profile'
+        ]);
     }
 }
