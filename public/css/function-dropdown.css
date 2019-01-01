@@ -32,7 +32,17 @@
     min-width: 100% !important;
 }
 
+#agendaDropdownMenuLink {
+    width: 100%;
+}
+
 @media (max-width: 768px) {
+    .nav-item {
+        border-bottom: solid;
+        border-color: #ffffff;
+        border-width: thin;
+    }
+
     .dropdown-menu-right {
         min-width: 100% !important;
         max-width: 100% !important;
