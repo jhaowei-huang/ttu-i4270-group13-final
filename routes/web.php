@@ -80,8 +80,10 @@ Route::group(['middleware' => ['web']], function () {
     });
     // 忘記密碼，並寄送含有重設密碼連結的信
     Route::post('/forgetPassword', 'Auth\PasswordController@forgetPassword');
-    Route::get('/resetPassword/{user_id}/{token}', 'Auth\PasswordController@showResetPassword');
-    Route::post('/resetPassword/{user_id}/{token}', 'Auth\PasswordController@showResetPassword');
+    // 點擊重設密碼信的連結
+    Route::get('/resetPassword', 'Auth\PasswordController@showResetPassword')->name('resetPassword');
+    Route::get('/resetPassword/{user_id}/{token}', 'Auth\PasswordController@verifyResetPassword');
+    Route::post('/resetPassword/', 'Auth\PasswordController@resetPassword');
 });
 
 

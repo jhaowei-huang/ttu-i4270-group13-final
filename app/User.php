@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -39,5 +38,10 @@ class User extends Authenticatable
     public function emailVerify()
     {
         return $this->hasOne('App\EmailVerify', 'user_id', 'user_id');
+    }
+
+    public function passwordReset()
+    {
+        return $this->hasOne('App\PasswordReset', 'user_id', 'user_id');
     }
 }

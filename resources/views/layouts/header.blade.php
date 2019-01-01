@@ -51,7 +51,7 @@
                             'signup' => false,
                             'forget' => false,
                             'style' => 'css/function-dropdown.css'
-                        ]);
+                        ])
                         <form action="{{ route('signout') }}" method="POST">
                             @csrf
                             <button type="submit" class="dropdown-item btn btn-link btn-sm"

@@ -76,7 +76,7 @@
     @endif
     @if($enable[5])
         <div class="dropdown-item">
-            <div id="btn-forget"
+            <div id="btn-forgetPassword"
                  class="btn btn-sm col-6 d-flex justify-content-center align-content-between indicator">
                 <i class="fas fa-question"></i></i><span>忘記密碼</span>
             </div>

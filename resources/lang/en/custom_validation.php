@@ -31,5 +31,6 @@ return [
     'error_new_password_same' => '新密碼不能與帳號或舊密碼一樣',
     // 重設密碼錯誤
     'error_email' => '找不到使用該email的帳號',
-    'error_email_empty' => '請輸入email'
+    'error_email_empty' => '請輸入email',
+    'error_user_id_token' => '錯誤的ID或代碼'
 ];
