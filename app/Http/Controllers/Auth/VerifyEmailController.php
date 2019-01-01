@@ -37,7 +37,7 @@ class VerifyEmailController extends Controller
             $status = 3;
         }
 
-        return redirect('verifyUserEmailResult')->with([
+        return redirect()->route('verifyUserEmailResult')->with([
             'status' => $status,
             'username' => $username,
             'email' => $email

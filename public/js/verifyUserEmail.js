@@ -17,8 +17,7 @@ function waiting(status = true) {
 
 function success(response) {
     try {
-        console.log(response);
-        // 若註冊成功就跳轉到指定頁面
+        // 若重新寄送驗證信成功就跳轉到指定頁面
         window.location.href = response.redirect;
     } catch (e) {
         console.log(e);

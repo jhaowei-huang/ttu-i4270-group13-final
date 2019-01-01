@@ -43,7 +43,7 @@ class UserProfileController extends Controller
     public function updateEmail(Request $request)
     {
         $user = Auth::user();
-        if($user->email_verified == 1) {
+        if ($user->email_verified == 1) {
             return response()->json(['redirect' => '/verifyUserEmail']);
         }
 
@@ -70,12 +70,12 @@ class UserProfileController extends Controller
         }
 
         Mail::to($new_email)->send(new VerifyUserEmail());
-        session(['message' => '已經重新發送驗證信']);
+        session(['verifyUserEmail_message' => '已經重新發送驗證信']);
         return response()->json(['redirect' => '/verifyUserEmail']);
     }
 
     public function test()
     {
-        
+
     }
 }
