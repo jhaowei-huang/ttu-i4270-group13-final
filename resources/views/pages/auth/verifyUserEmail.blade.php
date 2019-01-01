@@ -12,11 +12,11 @@
                     @auth
                         <div class="card-header">帳號信箱驗證</div>
                         <div class="card-body">
-                            @if (Auth::user()->email_verified == false)
+                            @if(Auth::user()->email_verified == false)
                                 @if(Session::has('verifyUserEmail_message'))
-                                    <div class="d-flex flex-fill mb-3 justify-content-center indicator">
-                                        <i class="far fa-smile fa-2x success"></i>
-                                        <span class="mt-1 success">{{ Session::pull('verifyUserEmail_message')}}</span>
+                                    <div class="d-flex flex-fill mb-3 justify-content-center success">
+                                        <i class="far fa-smile fa-2x"></i>
+                                        <span class="mt-1">{{ Session::pull('verifyUserEmail_message')}}</span>
                                     </div>
                                 @endif
                                 <p>{{ Auth::user()->name }} 您好</p>
