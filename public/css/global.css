@@ -55,6 +55,29 @@ body {
     cursor: pointer;
 }
 
+.color-primary {
+    background-color: transparent;
+    color: #e3342f;
+}
+
+.color-secondary {
+    background-color: transparent;
+    color: #2d995b;
+}
+
+.color-third {
+    background-color: transparent;
+    color: #1d68a7;
+}
+
+.color-red {
+    color: #e3342f;
+}
+
+.color-blue {
+    color: #1d68a7;
+}
+
 @media (max-width: 768px) {
     .nav-item, .dropdown-menu, .dropdown-menu-right {
         min-width: 100% !important;

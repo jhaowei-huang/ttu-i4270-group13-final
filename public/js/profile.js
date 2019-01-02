@@ -20,14 +20,14 @@ function waiting(status = true) {
         // 等待資料傳輸中
         $('.validation-area').text('驗證中，請稍後');
         $('#loading').css('display', 'block');
-        $('form-profile input').prop('disabled', true);
+        $('#form-profile input').prop('disabled', true);
         $('#btn-submit').prop('disabled', true);
     } else {
         // 資料傳輸完畢
         $('.input-invalid').removeClass('input-invalid');
         $('.validation-area').text('');
         $('#loading').css('display', 'none');
-        $('form-profile input').prop('disabled', false);
+        $('#form-profile input').prop('disabled', false);
         $('#btn-submit').prop('disabled', false);
         grecaptcha.reset();
     }
@@ -74,5 +74,54 @@ $(document).ready(function () {
         waiting();
         // 使用ajax遞送表單，避免頁面刷新
         ajax('POST', '/profile', data, success, error);
+    });
+
+    $('#modal').on('hidden.bs.modal', function (e) {
+        $('#column-2').remove();
+        $('#column-3').remove();
+    });
+
+    $('#btn-editPassword').on('click', function (e) {
+        $('#modal-title').text('修改密碼');
+        $('#modal-text').html('輸入您現在的<strong class="color-primary">原密碼</strong>以及<strong class="color-secondary">新密碼</strong></span><p>注意!! 修改密碼完成後將會<strong class="color-third">登出</strong></p>');
+
+        let column1 = $('#column-1');
+        column1.find('i').removeClass().addClass('fas fa-key');
+        column1.find('input')
+            .attr('placeholder', '原密碼')
+            .attr('id', 'old-password')
+            .attr('name', 'old-password');
+        let form = $('#form-modal');
+
+        let column2 = column1.clone(true).attr('id', 'column-2');
+        column2.find('input')
+            .attr('placeholder', '新密碼')
+            .attr('id', 'password')
+            .attr('name', 'password');
+        form.append(column2);
+
+        let column3 = column1.clone(true).attr('id', 'column-3');
+        column3.find('input')
+            .attr('placeholder', '再輸入一次新密碼')
+            .attr('id', 'confirm-password')
+            .attr('name', 'confirm-password');
+        form.append(column3);
+
+        $('#modal').modal('show');
+    });
+
+    $('#btn-editEmail').on('click', function (e) {
+        $('#modal-title').text('修改email');
+        $('#modal-text').html('請輸入新的email<p>注意!! 修改email完成後將會<strong class="color-third">登出</strong>並且需要<strong class="color-primary">重新驗證email</strong></p>')
+            .append('您現在的email： ' + $('#btn-editEmail').parent().parent().find('input').attr('value'));
+
+        let column1 = $('#column-1');
+        column1.find('i').removeClass().addClass('fas fa-at');
+        column1.find('input')
+            .attr('placeholder', '新 email')
+            .attr('id', 'old-email')
+            .attr('name', 'old-email');
+
+        $('#modal').modal('show');
     });
 });

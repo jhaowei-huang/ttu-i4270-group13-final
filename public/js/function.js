@@ -12,6 +12,8 @@ $(document).ready(function () {
             window.location.href = '/signup';
         } else if (id === 'btn-forgetPassword') {
             window.location.href = '/forgetPassword';
+        } else if (id === 'btn-profile') {
+            window.location.href = '/profile';
         }
     });
 });

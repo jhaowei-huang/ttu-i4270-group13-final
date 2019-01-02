@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-    <div class="container mt-5 pt-3">
+    <div class="container mt-5 pt-4 pt-md-4">
         <div class="row">
             <div class="col-12 col-md-6">
                 @if(Session::get('profile_message') != '')
@@ -25,33 +25,41 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-user mx-auto"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="帳號"
-                               id="username" name="username" value="{{ Auth::user()->username }}" disabled>
+                        <input type="text" class="form-control" placeholder="帳號" value="{{ Auth::user()->username }}" disabled>
                     </div>
                 </div>
-                <div class="form-group mt-3 mx-2">
+                <div class="form-group mx-2">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-key mx-auto"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="password"
-                               id="password" name="password" value="******" disabled>
+                        <input type="password" class="form-control" placeholder="password" value="******" disabled>
                         <div class="input-group-append">
-                            <button class="btn btn-outline-danger input-group-text"><i class="fa fa-edit mr-1"></i>
+                            <button id="btn-editPassword" class="btn btn-sm btn-outline-danger input-group-text"><i class="fa fa-edit mr-1"></i>
                                 修改
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="form-group mt-3 mx-2">
+                <div class="form-group mx-2">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-at mx-auto"></i></span>
                         </div>
-                        <input type="email" class="form-control" placeholder="email"
-                               id="email" name="email" value="{{ Auth::user()->email }}" disabled>
+                        <input type="email" class="form-control" placeholder="email" value="{{ Auth::user()->email }}" disabled>
                         <div class="input-group-append">
-                            <button class="btn btn-outline-danger input-group-text"><i class="fa fa-edit mr-1"></i>
+                            @if(Auth::user()->email_verified == 1)
+                                <btn class="btn btn-sm btn-outline-success input-group-text success"><i class="fas fa-check-circle mr-1"></i>
+                                    已驗證
+                                </btn>
+                            @else
+                                <btn class="btn btn-sm btn-outline-danger input-group-text error"><i class="fas fa-times-circle mr-1"></i>
+                                    未驗證
+                                </btn>
+                            @endif
+                        </div>
+                        <div class="input-group-append">
+                            <button id="btn-editEmail" class="btn btn-sm btn-outline-danger input-group-text"><i class="fa fa-edit mr-1"></i>
                                 修改
                             </button>
                         </div>
@@ -60,7 +68,7 @@
             </div>
             <div class="col-12 col-md-6">
                 <form id="form-profile" method="POST">
-                    <div class="mx-2 mt-2">
+                    <div class="form-group mx-2">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-font mx-auto"></i></span>
@@ -69,7 +77,7 @@
                                    id="name" name="name" value="{{ Auth::user()->name }}">
                         </div>
                     </div>
-                    <div class="mx-2 mt-2">
+                    <div class="form-group mx-2">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-map-marked-alt mx-auto"></i></span>
@@ -78,7 +86,7 @@
                                    id="address" name="address" value="{{ Auth::user()->address }}">
                         </div>
                     </div>
-                    <div class="mx-2 mt-2">
+                    <div class="form-group mx-2">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-building mx-auto"></i></span>
@@ -87,7 +95,7 @@
                                    id="department" name="department" value="{{ Auth::user()->department }}">
                         </div>
                     </div>
-                    <div class="mx-2 mt-2">
+                    <div class="form-group mx-2">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-id-card mx-auto"></i></span>
@@ -96,40 +104,32 @@
                                    id="position" name="position" value="{{ Auth::user()->position }}">
                         </div>
                     </div>
-                    <div class="mx-2 mt-2">
+                    <div class="form-group mx-2">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-phone mx-auto"></i></span>
                             </div>
                             <input type="text" class="form-control" placeholder="電話"
                                    id="phone" name="phone" value="{{ Auth::user()->phone }}">
-                        </div>
-                    </div>
-                    <div class="mx-2 mt-2">
-                        <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-phone mx-auto"></i></span>
+                                <span class="input-group-text"><i class="fas fa-hashtag mx-auto"></i></span>
                             </div>
                             <input type="text" class="form-control" placeholder="電話分機"
                                    id="phone_ext" name="phone_ext" value="{{ Auth::user()->phone_ext }}">
                         </div>
                     </div>
-                    <div class="mx-2 mt-2">
+                    <div class="form-group mx-2">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-fax mx-auto"></i></span>
                             </div>
                             <input type="text" class="form-control" placeholder="傳真"
                                    id="fax" name="fax" value="{{ Auth::user()->fax }}">
-                        </div>
-                    </div>
-                    <div class="mx-2 mt-2">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-fax mx-auto"></i></span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="傳真分機"
-                                   id="fax_ext" name="fax_ext" value="{{ Auth::user()->fax_ext }}">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-hashtag mx-auto"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="傳真分機"
+                                       id="fax_ext" name="fax_ext" value="{{ Auth::user()->fax_ext }}">
                         </div>
                     </div>
                     <div class="row mt-2 justify-content-center">
@@ -138,9 +138,9 @@
                     </div>
                     <div class="row mt-2 justify-content-center">
                         <img id="loading" src="{{ asset('images/loading.gif') }}" alt="..."/>
-                        <div class="validation-area mt-1 mt-md-2"></div>
+                        <div class="validation-area my-1 mt-md-2"></div>
                     </div>
-                    <div class="row mt-1 justify-content-center">
+                    <div class="row mt-1 mx-2 justify-content-center">
                         <button type="submit" class="btn btn-primary flex-fill flex-md-grow-0"
                                 id="btn-submit">更新個人檔案
                         </button>
@@ -149,27 +149,38 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"
-         id="confirm-modal">
-        <div class="modal-dialog modal-sm">
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true"
+         id="modal">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-title">確認</h5>
+                    <h5 class="modal-title" id="modal-title"></h5>
                     <button type="button" class="close disableWhenSubmit" data-dismiss="modal" aria-hidden="true">×
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p class="text-center mt-5" id="modal-text"></p>
-                    <div class="row mt-5">
-                        <button type="button" class="btn btn-secondary mx-auto" id="btn-not-confirm">取消</button>
-                        <button type="button" class="btn btn-success mx-auto" id="btn-confirm">確定</button>
+                    <span class="mt-1" id="modal-text"></span>
+                    <div class="justify-content-center mt-3">
+                        <form id="form-modal" method="POST">
+                            @csrf
+                            <div id="column-1" class="form-group mx-2">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                        </form>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary mx-auto" id="btn-cancel" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-success mx-auto" id="btn-submitModal">修改</button>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
 
 @push('scripts')

@@ -50,6 +50,7 @@
                             'signin' => false,
                             'signup' => false,
                             'forget' => false,
+                            'profile' => true,
                             'style' => 'css/function-dropdown.css'
                         ])
                         <form action="{{ route('signout') }}" method="POST">

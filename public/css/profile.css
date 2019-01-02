@@ -1,5 +1,5 @@
 .input-group > .input-group-prepend {
-    flex: 0 0 15%;
+    flex: 0 0 10%;
 }
 
 .input-group .input-group-text {
@@ -61,5 +61,17 @@ i {
         margin-right: -1rem;
         max-width: 1.5rem;
         max-height: 1.5rem;
+    }
+
+    .input-group > .input-group-prepend {
+        flex: 0 0 14%;
+    }
+
+    .input-group > .input-group-append {
+        flex: 0 0 10%;
+    }
+
+    .input-group .input-group-text {
+        width: 100%;
     }
 }
