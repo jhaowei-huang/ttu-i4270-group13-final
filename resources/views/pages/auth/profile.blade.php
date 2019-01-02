@@ -186,7 +186,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary mx-auto" id="btn-cancel" data-dismiss="modal">取消
+                    <button type="button" class="btn btn-secondary mx-auto" data-dismiss="modal">取消
                     </button>
                     <button type="button" class="btn btn-success mx-auto" id="btn-submitModal">修改</button>
                 </div>
