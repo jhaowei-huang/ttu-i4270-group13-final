@@ -25,7 +25,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-user mx-auto"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="帳號" value="{{ Auth::user()->username }}" disabled>
+                        <input type="text" class="form-control" placeholder="帳號" value="{{ Auth::user()->username }}"
+                               disabled>
                     </div>
                 </div>
                 <div class="form-group mx-2">
@@ -35,7 +36,8 @@
                         </div>
                         <input type="password" class="form-control" placeholder="password" value="******" disabled>
                         <div class="input-group-append">
-                            <button id="btn-editPassword" class="btn btn-sm btn-outline-danger input-group-text"><i class="fa fa-edit mr-1"></i>
+                            <button id="btn-editPassword" class="btn btn-sm btn-outline-danger input-group-text"><i
+                                    class="fa fa-edit mr-1"></i>
                                 修改
                             </button>
                         </div>
@@ -46,20 +48,24 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-at mx-auto"></i></span>
                         </div>
-                        <input type="email" class="form-control" placeholder="email" value="{{ Auth::user()->email }}" disabled>
+                        <input type="email" class="form-control" placeholder="email" value="{{ Auth::user()->email }}"
+                               disabled>
                         <div class="input-group-append">
                             @if(Auth::user()->email_verified == 1)
-                                <btn class="btn btn-sm btn-outline-success input-group-text success"><i class="fas fa-check-circle mr-1"></i>
+                                <btn class="btn btn-sm btn-outline-success input-group-text success"><i
+                                        class="fas fa-check-circle mr-1"></i>
                                     已驗證
                                 </btn>
                             @else
-                                <btn class="btn btn-sm btn-outline-danger input-group-text error"><i class="fas fa-times-circle mr-1"></i>
+                                <btn class="btn btn-sm btn-outline-danger input-group-text error"><i
+                                        class="fas fa-times-circle mr-1"></i>
                                     未驗證
                                 </btn>
                             @endif
                         </div>
                         <div class="input-group-append">
-                            <button id="btn-editEmail" class="btn btn-sm btn-outline-danger input-group-text"><i class="fa fa-edit mr-1"></i>
+                            <button id="btn-editEmail" class="btn btn-sm btn-outline-danger input-group-text"><i
+                                    class="fa fa-edit mr-1"></i>
                                 修改
                             </button>
                         </div>
@@ -125,16 +131,16 @@
                             </div>
                             <input type="text" class="form-control" placeholder="傳真"
                                    id="fax" name="fax" value="{{ Auth::user()->fax }}">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-hashtag mx-auto"></i></span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="傳真分機"
-                                       id="fax_ext" name="fax_ext" value="{{ Auth::user()->fax_ext }}">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-hashtag mx-auto"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="傳真分機"
+                                   id="fax_ext" name="fax_ext" value="{{ Auth::user()->fax_ext }}">
                         </div>
                     </div>
                     <div class="row mt-2 justify-content-center">
                         <div class="g-recaptcha"
-                             data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
+                             data-sitekey="{{ config('app.google_recaptcha_key') }}"></div>
                     </div>
                     <div class="row mt-2 justify-content-center">
                         <img id="loading" src="{{ asset('images/loading.gif') }}" alt="..."/>
@@ -163,19 +169,25 @@
                     <div class="justify-content-center mt-3">
                         <form id="form-modal" method="POST">
                             @csrf
+                            <input id="force" name="force" value="true" hidden>
                             <div id="column-1" class="form-group mx-2">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input type="text" class="form-control modal-input" placeholder="">
                                 </div>
                             </div>
                         </form>
+                        <div class="row mb-2 justify-content-center">
+                            <img id="modal-loading" src="{{ asset('images/loading.gif') }}" alt="..."/>
+                            <div class="modal-validation-area mt-1 mt-md-2"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary mx-auto" id="btn-cancel" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-secondary mx-auto" id="btn-cancel" data-dismiss="modal">取消
+                    </button>
                     <button type="button" class="btn btn-success mx-auto" id="btn-submitModal">修改</button>
                 </div>
             </div>

@@ -27,16 +27,19 @@ class UserProfileController extends Controller
      * Get a validator for an incoming update email request.
      *
      * @param  array $data
+     * @param $force
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function emailValidator(array $data)
     {
-        return Validator::make($data, [
+        $rule = [
             'email' => ['required', 'email',
                 Rule::unique('users', 'email')->ignore(Auth::user()->user_id, 'user_id')],
-        ], [
-            'email.required' => trans('custom_validation.error_email_validation'),
-            'email.regex' => trans('custom_validation.error_email_validation'),
+        ];
+
+        return Validator::make($data, $rule, [
+            'email.required' => trans('custom_validation.error_email_empty'),
+            'email.email' => trans('custom_validation.error_email_validation'),
             'email.unique' => trans('custom_validation.error_email_exist'),
         ]);
     }
@@ -44,20 +47,42 @@ class UserProfileController extends Controller
     public function updateEmail(Request $request)
     {
         $user = Auth::user();
-        if ($user->email_verified == 1) {
+        $force = false;
+        if ($request->has('force'))
+            $force = $request->get('force');
+
+        if ($user->email_verified == 1 && $force == false) {
             return response()->json(['redirect' => '/verifyUserEmail']);
         }
 
         $user_id = $user->user_id;
-        $new_email = $request->get('email');
-        // 驗證輸入的是否符合email格式
-        $this->emailValidator($request->all())->validate();
+
+        if ($force) {
+            $new_email = $request->get('modal-email');
+            $data = ['email' => $new_email];
+            $this->emailValidator($data)->validate();
+        } else {
+            $new_email = $request->get('email');
+            // 驗證輸入的是否符合email格式
+            $this->emailValidator($request->all())->validate();
+        }
+
+        if ($new_email === $user->email && $force) {
+            return response()->json([
+                'errors' => [
+                    'modal-email' => '與原本email一樣，請換一個'
+                ]
+            ]);
+        }
 
         User::where('user_id', $user_id)->first()
-            ->update(['email' => $new_email,
-                'email_verified' => 0]);
+            ->update([
+                'email' => $new_email,
+                'email_verified' => false
+            ]);
 
         $emailVerify = EmailVerify::where('user_id', $user_id)->first();
+
         if (!isset($emailVerify)) {
             // 若沒有還沒有email verify model的話，則建立一個
             EmailVerify::create([
@@ -71,8 +96,17 @@ class UserProfileController extends Controller
         }
 
         Mail::to($new_email)->send(new VerifyUserEmail());
-        session(['verifyUserEmail_message' => '已經重新發送驗證信']);
-        return response()->json(['redirect' => '/verifyUserEmail']);
+
+        if ($force) {
+            // 從所有裝置登出
+            app('db')->table('sessions')
+                ->where('user_id', $user->user_id)->delete();
+            session(['updateEmail_message' => '您的email修改成功，請重新登入']);
+            return response()->json(['redirect' => '/signin']);
+        } else {
+            session(['verifyUserEmail_message' => '已經重新發送驗證信']);
+            return response()->json(['redirect' => '/verifyUserEmail']);
+        }
     }
 
     protected function profileValidator($data)
@@ -128,4 +162,5 @@ class UserProfileController extends Controller
             'redirect' => '/profile'
         ]);
     }
+
 }

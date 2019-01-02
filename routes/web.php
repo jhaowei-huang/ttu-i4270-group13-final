@@ -72,7 +72,7 @@ Route::group(['middleware' => ['web']], function () {
     // 驗證信箱結果
     Route::get('/verifyUserEmailResult', 'Auth\VerifyEmailController@verifyUserEmailResult')->name('verifyUserEmailResult');
     // 重設email並重新寄送驗證信
-    Route::post('/updateEmail', 'Auth\UserProfileController@updateEmail');
+    Route::post('/updateEmail', 'Auth\UserProfileController@updateEmail')->middleware('auth');
 
     // 忘記密碼相關
     // 忘記密碼畫面
@@ -92,4 +92,5 @@ Route::group(['middleware' => ['web']], function () {
         return view('pages.auth.profile')->with(['profile_message' => $profile_message]);
     })->middleware('auth');
     Route::post('/profile', 'Auth\UserProfileController@updateProfile');
+    Route::post('/profile/updatePassword', 'Auth\PasswordController@updatePassword')->middleware('auth');
 });

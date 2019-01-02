@@ -9,6 +9,18 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-4 align-content-center">
                 <h3 class="text-center mb-3">登入會員</h3>
+                @if(Session::has('updatePassword_message'))
+                    <div class="d-flex flex-fill mb-3 justify-content-center success">
+                        <i class="far fa-smile fa-2x"></i>
+                        <span class="mt-1">{{ Session::pull('updatePassword_message')}}</span>
+                    </div>
+                @endif
+                @if(Session::has('updateEmail_message'))
+                    <div class="d-flex flex-fill mb-3 justify-content-center success">
+                        <i class="far fa-smile fa-2x"></i>
+                        <span class="mt-1">{{ Session::pull('updateEmail_message')}}</span>
+                    </div>
+                @endif
                 <form id="form-signin" method="POST">
                     @csrf
                     <div class="form-group">
@@ -31,7 +43,7 @@
                     </div>
                     <div class="row justify-content-center mt-3 mb-2">
                         <div class="g-recaptcha"
-                             data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
+                             data-sitekey="{{ config('app.google_recaptcha_key') }}"></div>
                     </div>
                     <div class="row mb-2 justify-content-center">
                         <img id="loading" src="{{ asset('images/loading.gif') }}" alt="..."/>

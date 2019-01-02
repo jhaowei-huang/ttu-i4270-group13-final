@@ -9,6 +9,7 @@ use App\Rules\Captcha;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -32,7 +33,9 @@ class PasswordController extends Controller
     public function __construct()
     {
         // 受到guest的中介層保護，若為登入狀態則跳轉到首頁
-        $this->middleware('guest');
+        $this->middleware('guest', [
+            'except' => 'updatePassword'
+        ]);
     }
 
     /**
@@ -179,6 +182,7 @@ class PasswordController extends Controller
 
     public function resetPassword(Request $request)
     {
+        $expired_time = config('app.email_expired_time');
         $token = $request->get('token');
 
         $passwordReset = PasswordReset::where('token', $token)->first();
@@ -188,7 +192,7 @@ class PasswordController extends Controller
             $user = $passwordReset->user;
             $current = Carbon::now();
             $updated_at = $passwordReset->updated_at;
-            $expired = ($current->diffInMinutes($updated_at) > env('EMAIL_EXPIRED_TIME')) ? true : false;
+            $expired = ($current->diffInMinutes($updated_at) > $expired_time) ? true : false;
 
             $data = [
                 'g-recaptcha-response' => $request->get('g-recaptcha-response'),
@@ -245,5 +249,60 @@ class PasswordController extends Controller
         ]);
 
         return response()->json(['redirect' => '/resetPassword']);
+    }
+
+    /**
+     * 自定義一個驗證器來驗證表單資料格式是否正確
+     *
+     * @param  array $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function updatePasswordValidator(array $data)
+    {
+        return Validator::make($data, [
+            'password' => ['required', 'different:username', 'different:old_password', 'regex:/^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/'],
+            'confirm_password' => 'required | same:password',
+        ], [
+            'password.required' => trans('custom_validation.error_password_validation'),
+            'password.different' => trans('custom_validation.error_new_password_same'),
+            'password.regex' => trans('custom_validation.error_password_validation'),
+            'confirm_password.*' => trans('custom_validation.error_password_confirm'),
+        ]);
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+        // 確認原密碼是否正確
+        if (Hash::check($request->get('modal-old-password'), $user->getAuthPassword())) {
+            $data = [
+                'username' => Auth::user()->username,
+                'old_password' => $request->get('modal-old-password'),
+                'password' => $request->get('modal-password'),
+                'confirm_password' => $request->get('modal-confirm-password')
+            ];
+
+            // 確認新密碼是否符合規則
+            $this->updatePasswordValidator($data)->validate();
+            // 若新密碼符合規則，便會寫入資料庫
+            User::where('username', $user->username)
+                ->update(['password' => Hash::make($request->get('modal-password'))]);
+
+            // 從所有裝置登出
+            app('db')->table('sessions')
+                ->where('user_id', $user->user_id)->delete();
+
+            session(['updatePassword_message' => '您的密碼修改成功，請重新登入'], '');
+
+            return response()->json([
+                'redirect' => '/signin',
+            ]);
+        } else {
+            return response()->json([
+                'errors' => [
+                    'modal-old-password' => trans('custom_validation.error_old_password')
+                ],
+            ]);
+        }
     }
 }

@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="row justify-content-center mt-3 mb-2">
                                         <div class="g-recaptcha"
-                                             data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
+                                             data-sitekey="{{ config('app.google_recaptcha_key') }}"></div>
                                     </div>
                                     <div class="row mb-2 justify-content-center">
                                         <img id="loading" src="{{ asset('images/loading.gif') }}" alt="..."/>
