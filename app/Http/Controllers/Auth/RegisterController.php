@@ -62,7 +62,7 @@ class RegisterController extends Controller
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'different:username', 'regex:/^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/'],
             'confirm_password' => 'required | same:password',
-            'name' => ['required', "regex:/^[\x{4e00}-\x{9fa5}]{2,}$|^[a-zA-Z0-9]{3,}$|[^!@#$%\^&*()_\-=+~`,.<>\]\[\{\}\|\'\"\/\\\\\;:]{3,}$/u"],
+            'name' => ['required', "regex:/^[\x{4e00}-\x{9fa5}]{2,}$|[^!@#$%\^&*()_\-=+~`,.<>\]\[\{\}\|\'\"\/\\\\\;:]{3,}$/Au"],
             'address' => 'nullable | string',
             'department' => 'nullable | string',
             'position' => 'nullable | string',
