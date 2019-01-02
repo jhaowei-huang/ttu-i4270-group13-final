@@ -5,7 +5,7 @@ deploy:
   image: python:latest
   script:
     - pip install awscli
-    - aws s3 cp ./ s3://$S3_BUCKET_NAME/ --recursive --exclude "*" --include "*.html"
+    - aws s3 cp ./ s3://elasticbeanstalk-ap-northeast-1-536332584151/ --recursive --exclude "*" --include "*.html"
   only:
     - master
 
