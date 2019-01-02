@@ -226,4 +226,8 @@ return [
 
     ],
 
+    // 自定義的環境變數
+    'email_expired_time' => env('EMAIL_EXPIRED_TIME', 10),
+    'google_recaptcha_key' => env('GOOGLE_RECAPTCHA_KEY', ''),
+    'google_recaptcha_secret' => env('GOOGLE_RECAPTCHA_SECRET', ''),
 ];

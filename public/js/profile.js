@@ -63,6 +63,64 @@ function error(jqXHR, exception) {
     }
 }
 
+function modalWaiting(status = true) {
+    if (status) {
+        // 等待資料傳輸中
+        $('.modal-validation-area').text('驗證中，請稍後');
+        $('#modal-loading').css('display', 'block');
+        $('#form-modal input').prop('disabled', true);
+        $('#btn-submitModal').prop('disabled', true);
+    } else {
+        // 資料傳輸完畢
+        $('.modal-input').removeClass('input-invalid');
+        $('.modal-validation-area').text('');
+        $('#modal-loading').css('display', 'none');
+        $('#form-modal input').prop('disabled', false);
+        $('#btn-submitModal').prop('disabled', false);
+    }
+}
+
+function modalSuccess(response) {
+    try {
+        if (!response.hasOwnProperty('errors')) {
+            // 成功寄送重設密碼的信件，重新跳轉至指定頁面
+            window.location.href = response.redirect;
+        } else {
+            modalWaiting(false);
+            let errors = response.errors;
+            for (let key in errors) {
+                if (errors[key] !== '' && errors.hasOwnProperty(key)) {
+                    $('.modal-validation-area').append(errors[key] + '\n');
+                    $('#modal-' + key).addClass('input-invalid');
+                }
+            }
+        }
+    } catch (e) {
+        console.log(e);
+        console.log(response);
+    }
+}
+
+function modalError(jqXHR, exception) {
+    let validation = $('.modal-validation-area');
+
+    modalWaiting(false);
+
+    if (jqXHR.status === 422) {
+        // 狀態422為Laravel預設的表單驗證錯誤狀態
+        let errors = jqXHR.responseJSON.errors;
+
+        for (let key in errors) {
+            if (errors[key] !== '' && errors.hasOwnProperty(key)) {
+                validation.append(errors[key] + '\n');
+                $('#modal-' + key).addClass('input-invalid');
+            }
+        }
+    } else {
+        validation.append(jqXHR.status, '：伺服器錯誤');
+    }
+}
+
 $(document).ready(function () {
     setTooltip();
 
@@ -88,24 +146,33 @@ $(document).ready(function () {
         let column1 = $('#column-1');
         column1.find('i').removeClass().addClass('fas fa-key');
         column1.find('input')
+            .attr('type', 'password')
             .attr('placeholder', '原密碼')
-            .attr('id', 'old-password')
-            .attr('name', 'old-password');
+            .attr('id', 'modal-old-password')
+            .attr('name', 'modal-old-password');
         let form = $('#form-modal');
 
         let column2 = column1.clone(true).attr('id', 'column-2');
         column2.find('input')
             .attr('placeholder', '新密碼')
-            .attr('id', 'password')
-            .attr('name', 'password');
+            .attr('id', 'modal-password')
+            .attr('name', 'modal-password');
         form.append(column2);
 
         let column3 = column1.clone(true).attr('id', 'column-3');
         column3.find('input')
             .attr('placeholder', '再輸入一次新密碼')
-            .attr('id', 'confirm-password')
-            .attr('name', 'confirm-password');
+            .attr('id', 'modal-confirm-password')
+            .attr('name', 'modal-confirm-password');
         form.append(column3);
+
+        $('#btn-submitModal').on('click', function (e) {
+            e.preventDefault();
+            let data = $('#form-modal').serialize();
+            modalWaiting();
+            ajax('POST', '/profile/updatePassword', data,
+                modalSuccess, modalError);
+        });
 
         $('#modal').modal('show');
     });
@@ -118,9 +185,18 @@ $(document).ready(function () {
         let column1 = $('#column-1');
         column1.find('i').removeClass().addClass('fas fa-at');
         column1.find('input')
-            .attr('placeholder', '新 email')
-            .attr('id', 'old-email')
-            .attr('name', 'old-email');
+            .attr('type', 'email')
+            .attr('placeholder', '新email')
+            .attr('id', 'modal-email')
+            .attr('name', 'modal-email');
+
+        $('#btn-submitModal').on('click', function (e) {
+            e.preventDefault();
+            let data = $('#form-modal').serialize();
+            modalWaiting();
+            ajax('POST', '/updateEmail', data,
+                modalSuccess, modalError);
+        });
 
         $('#modal').modal('show');
     });
