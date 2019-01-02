@@ -20,7 +20,8 @@
                                     </div>
                                 @endif
                                 <p>{{ Auth::user()->name }} 您好</p>
-                                <p>系統已經寄送一封認證信至 <strong style="color: #c51f1a">{{ Auth::user()->email }}</strong></p>
+                                    <p>系統已經在 <strong style="color: #c51f1a">{{ \App\EmailVerify::where('user_id', Auth::user()->user_id)->first()->updated_at }}</strong>
+                                        寄送一封認證信至 <strong style="color: #c51f1a">{{ Auth::user()->email }}</strong></p>
                                 <p>大約數分鐘內就會收到，也請留意是否不小心被分類為垃圾信件</p>
                                 <p>您必須要認證email才能進行後續動作</p>
                                 <br>
@@ -51,7 +52,10 @@
                             @else
                                 <p>{{ Auth::user()->name }} 您好</p>
                                 <p>您的email： <strong style="color: #c51f1a">{{ Auth::user()->email }}</strong></p>
-                                <p><i class="far fa-smile fa-2x success"></i>已經驗證完成</p>
+                                <div class="d-flex flex-fill mb-3 justify-content-start success">
+                                    <i class="far fa-smile fa-2x"></i>
+                                    <span class="mt-1">已經驗證完成</span>
+                                </div>
                                 @include('layouts.function', ['all'=>false, 'register'=>true, 'inquire'=>true, 'cancel'=>true])
                             @endif
                         </div>

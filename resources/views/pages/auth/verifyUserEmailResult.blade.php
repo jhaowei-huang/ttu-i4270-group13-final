@@ -15,28 +15,28 @@
                         <p>eamil： {{ $email }}</p>
                         @if($status == 0)
                             <div
-                                class="btn btn-sm col-6 d-flex flex-fill justify-content-start indicator">
-                                <i class="far fa-frown fa-2x error"></i><span>驗證失敗，請確認點擊的連結是最新發送的</span>
+                                class="btn btn-sm col-6 d-flex flex-fill justify-content-start error">
+                                <i class="far fa-frown fa-2x"></i><span>驗證失敗，請確認點擊的連結是最新發送的</span>
                             </div>
                         @elseif($status == 1)
                             <div
-                                class="btn btn-sm col-6 d-flex flex-fill justify-content-start indicator">
-                                <i class="far fa-smile fa-2x success"></i><span>驗證成功</span>
+                                class="btn btn-sm col-6 d-flex flex-fill justify-content-start success">
+                                <i class="far fa-smile fa-2x"></i><span>驗證成功</span>
                             </div>
                         @elseif($status == 2)
                             <div
-                                class="btn btn-sm col-6 d-flex flex-fill justify-content-start indicator">
+                                class="btn btn-sm col-6 d-flex flex-fill justify-content-start success">
                                 <i class="far fa-smile fa-2x success"></i><span>已經驗證成功，無須重複點擊</span>
                             </div>
                         @elseif($status == 3)
                             <div
-                                class="btn btn-sm col-6 d-flex flex-fill justify-content-start indicator">
-                                <i class="far fa-frown fa-2x error"></i><span>目前沒有該帳號</span>
+                                class="btn btn-sm col-6 d-flex flex-fill justify-content-start error">
+                                <i class="far fa-frown fa-2x"></i><span>目前沒有該帳號</span>
                             </div>
                         @else
                             <div
-                                class="btn btn-sm col-6 d-flex flex-fill justify-content-start indicator">
-                                <i class="far fa-frown fa-2x error"></i><span>請透過您信箱的連結來驗證</span>
+                                class="btn btn-sm col-6 d-flex flex-fill justify-content-start error">
+                                <i class="far fa-frown fa-2x"></i><span>請透過您信箱的連結來驗證</span>
                             </div>
                         @endif
                     </div>
